@@ -1,32 +1,31 @@
 #include <Wire.h>
 
-float pitch, roll;
+// Variables
+  float pitch, roll;
   
 union data_tag {
-float orientation[2];
-
-byte byte_recieved[8]; 
+  float pwm_input;
+  byte byte_recieved[4]; 
 } data;
 
 
-void setup()
-{
-  Wire.begin();
+void setup(){
+    Wire.begin();
     Serial.begin(9600);
 }
 
-void loop()
-{
-Wire.requestFrom(9,8);
-while(Wire.available()){
-    for(int i=0; i < 8; i++){
-  data.byte_recieved[i] = Wire.read();
-  }}
+void loop(){
+
+  Wire.requestFrom(9,4);
+  while(Wire.available()){
+      for(int i=0; i < 4; i++){
+    data.byte_recieved[i] = Wire.read();
+    }}
   
-  pitch = data.orientation[0];
-  roll = data.orientation[1];
-  Serial.println(pitch);
-  Serial.println(roll);
-  Serial.println("");
+  float pwm = data.pwm_input;
+  if(pwm == pwm){
+    Serial.println(pwm);
+    Serial.println("");
+  }
   delay(100);
 }

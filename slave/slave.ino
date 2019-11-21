@@ -105,6 +105,8 @@ void loop() {
   time = millis();                            // update time
   elapsedTime = (time - timePrev) / 1000;     //Self explaining
   calculateAngles();                          //Calculate the pitch and roll.
-  controlLoop(3, 1, 0.03);                  // Control loop with gain inputs
+  controlLoop(3, 0, 0.01);                  // Control loop with gain inputs
+  // Serial.println("OUTPUT:");
+  // Serial.print(output);
 
 }
