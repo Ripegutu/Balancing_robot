@@ -1,0 +1,11 @@
+standby = 10;
+
+MotorB:
+pwmB = 3;
+in1B = 2;
+in2B  = 4;
+
+MotorA:
+pwmA = 6;
+in1A = 7;
+in2A = 8;
